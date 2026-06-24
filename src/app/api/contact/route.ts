@@ -16,6 +16,10 @@ function isNonEmptyString(value: unknown): value is string {
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+const MAX_NAME_LENGTH = 120;
+const MAX_EMAIL_LENGTH = 200;
+const MAX_MESSAGE_LENGTH = 5000;
+
 export async function POST(request: Request) {
   let payload: ContactPayload;
 
@@ -40,6 +44,27 @@ export async function POST(request: Request) {
   if (!EMAIL_REGEX.test(email)) {
     return NextResponse.json(
       { error: "Please enter a valid email address." },
+      { status: 400 }
+    );
+  }
+
+  if (name.length > MAX_NAME_LENGTH) {
+    return NextResponse.json(
+      { error: `Name must be ${MAX_NAME_LENGTH} characters or fewer.` },
+      { status: 400 }
+    );
+  }
+
+  if (email.length > MAX_EMAIL_LENGTH) {
+    return NextResponse.json(
+      { error: `Email must be ${MAX_EMAIL_LENGTH} characters or fewer.` },
+      { status: 400 }
+    );
+  }
+
+  if (message.length > MAX_MESSAGE_LENGTH) {
+    return NextResponse.json(
+      { error: `Message must be ${MAX_MESSAGE_LENGTH} characters or fewer.` },
       { status: 400 }
     );
   }

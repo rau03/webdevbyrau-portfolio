@@ -33,7 +33,7 @@ All colors are defined as CSS variables in `globals.css` and mapped into Tailwin
   --color-border: #2b2b2b;
   --color-text-primary: #fafafa;
   --color-text-secondary: #a3a3a3;
-  --color-text-tertiary: #707070;
+  --color-text-tertiary: #8a8a8a;
   --color-accent: #fafafa;        /* mono default */
   --color-accent-foreground: #0a0a0a;
 }

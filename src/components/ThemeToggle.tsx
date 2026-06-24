@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState, useSyncExternalStore } from "react";
 
 type Theme = "mono" | "rust";
 
@@ -15,16 +15,23 @@ function applyTheme(theme: Theme) {
   }
 }
 
-export default function ThemeToggle() {
-  const [theme, setTheme] = useState<Theme>("mono");
-  const [mounted, setMounted] = useState(false);
+function readStoredTheme(): Theme {
+  if (typeof window === "undefined") return "mono";
+  const stored = localStorage.getItem(STORAGE_KEY) as Theme | null;
+  return stored === "rust" ? "rust" : "mono";
+}
 
-  // Sync state with whatever the pre-paint script already applied.
-  useEffect(() => {
-    const stored = (localStorage.getItem(STORAGE_KEY) as Theme | null) ?? "mono";
-    setTheme(stored === "rust" ? "rust" : "mono");
-    setMounted(true);
-  }, []);
+const subscribe = () => () => {};
+const getClientSnapshot = () => true;
+const getServerSnapshot = () => false;
+
+export default function ThemeToggle() {
+  const [theme, setTheme] = useState<Theme>(readStoredTheme);
+  const mounted = useSyncExternalStore(
+    subscribe,
+    getClientSnapshot,
+    getServerSnapshot
+  );
 
   function toggle() {
     const next: Theme = theme === "rust" ? "mono" : "rust";

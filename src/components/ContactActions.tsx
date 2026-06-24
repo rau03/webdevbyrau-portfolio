@@ -21,6 +21,7 @@ export default function ContactActions() {
         </button>
         <Link
           href={contact.ctas.resume.href}
+          prefetch={false}
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center justify-center rounded-full border border-border px-7 py-3 text-[13px] font-bold uppercase tracking-[0.15em] text-text-primary transition-colors hover:border-text-primary"

@@ -9,10 +9,12 @@ export default function Home() {
     <>
       <span id="top" />
       <Nav />
-      <Hero />
-      <Skills />
-      <Projects />
-      <AboutContact />
+      <main>
+        <Hero />
+        <Skills />
+        <Projects />
+        <AboutContact />
+      </main>
     </>
   );
 }
