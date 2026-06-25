@@ -250,7 +250,7 @@ export type About = {
 
 export const about: About = {
   body:
-    "Before I wrote a line of production code, I spent 17 years running programs in public schools — translating goals into plans, and plans into things that actually happened. That instinct carried straight into engineering: define the problem, ship something real, keep improving it after launch. The Mountain Pathway, live on the App Store, is the clearest proof. I also run a structured AI-assisted workflow (Cursor, Claude) to move fast without losing that discipline.",
+    "Before I wrote a line of production code, I spent 17 years running programs in public schools — translating goals into plans, and plans into things that actually happened. That instinct carried straight into engineering: define the problem, ship something real, keep improving it after launch. The Mountain Pathway, live on the App Store, is the clearest proof. I also run a structured AI-assisted workflow (Cursor, Claude) — logged sessions, single-purpose feature branches — to move fast without sacrificing engineering judgment.",
   links: {
     linkedin: "https://www.linkedin.com/in/raucp/",
     github: "https://github.com/rau03",
